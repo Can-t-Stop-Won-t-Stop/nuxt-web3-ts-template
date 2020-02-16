@@ -229,8 +229,7 @@
       this.showError = false
       this.isSending = true
       try {
-        await this.$ethereumService.enterRaid(this.ownAddress, this.kitty.tokenId, this.networkId, this.bonus)
-        this.closeEnterModal()
+        await this.$ethereumService.enterRaid(this.ownAddress, this.kitty.tokenId, this.networkId, this.bonus, this.closeEnterModal)
       } catch (e) {
         console.log(e)
         this.showError = true

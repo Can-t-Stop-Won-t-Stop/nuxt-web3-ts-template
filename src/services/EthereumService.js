@@ -6,7 +6,7 @@ import KittyCoreAbi from '~/assets/data/ethereum/KittyCoreAbi.json'
 import DaiAbi from '~/assets/data/ethereum/DaiAbi.json'
 import { BLOCKNATIVE } from '~/assets/data/non_secret_keys.js'
 
-const DRAGONKITTY_MAIN = '0x64b1Bcc75436BBcbBB5AF0A1fF8337Cc73c4e25d'
+const DRAGONKITTY_MAIN = '0x0D27c06D2DA8F1F409164bD0cae4A8fc25ed557E'
 const DRAGONKITTY_RINKEBY = '0x94a47955E7C69f390cc4Ca9ac9Aad93856b7ca1e'
 
 const DAI_MAINNET = '0x6b175474e89094c44da98b954eedeac495271d0f'
@@ -27,8 +27,8 @@ export default class EthereumService {
 
   getWeb3 () {
     if (this.provider === null) {
-      this.web3 = new Web3('https://shared-geth-rinkeby.nodes.deploy.radar.tech/?apikey=8f814d34c32fe7c41c2e908a8a2f210531fe0573685304a1')
-      // this.web3 = new Web3('https://shared-parity-mainnet.nodes.deploy.radar.tech/?apikey=7d9c7347814ae1a0630063de2a5df8f8d9be7d6a487dc7ad')
+      // this.web3 = new Web3('https://shared-geth-rinkeby.nodes.deploy.radar.tech/?apikey=8f814d34c32fe7c41c2e908a8a2f210531fe0573685304a1')
+      this.web3 = new Web3('https://shared-parity-mainnet.nodes.deploy.radar.tech/?apikey=7d9c7347814ae1a0630063de2a5df8f8d9be7d6a487dc7ad')
       return
     }
 
