@@ -100,6 +100,7 @@
                 @click="addBonus('daisake')"
                 :class="{'enterBattleModal__body__boosts__add--disabled': bonus.daisake === 5 }"
               ) +
+      .error(v-if="showError") Transaction Declined
 
     template(slot="footer")
       button(@click="closeEnterModal") Back
@@ -196,7 +197,7 @@
 
     get totalSpent () {
       const { chai, daiquiri, daisake } = this.bonus
-      return chai * 5 + daiquiri * 10 + daisake * 20
+      return chai * 1 + daiquiri * 5 + daisake * 10
     }
 
     async beforeMount () {
@@ -228,7 +229,7 @@
       this.showError = false
       this.isSending = true
       try {
-        await this.$ethereumService.enterRaid(this.ownAddress, this.kitty.tokenId, this.networkId, this.bonus, () => location.reload())
+        await this.$ethereumService.enterRaid(this.ownAddress, this.kitty.tokenId, this.networkId, this.bonus)
         this.closeEnterModal()
       } catch (e) {
         console.log(e)

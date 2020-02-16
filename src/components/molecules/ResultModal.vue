@@ -31,7 +31,7 @@ modal.resultModal(
         img(src="~/assets/images/icons/dai.png")
   template(slot="footer")
     button(
-       @modal-close="$emit('modal-close')"
+       @click="$emit('modal-close')"
     ) Close
     a.tweet(:href="urlForTwitter" target="_blank") Tweet
 </template>
