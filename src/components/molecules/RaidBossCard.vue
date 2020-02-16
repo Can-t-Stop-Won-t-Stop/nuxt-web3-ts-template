@@ -99,7 +99,7 @@ section
       this.fetched = true
       setInterval(async () => {
         this.bossStats = await this.$ethereumService.getCurrentBoss(this.networkId)
-      }, 2000)
+      }, 1000)
     }
 
     closeHistoryModal () {
