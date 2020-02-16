@@ -46,6 +46,9 @@
 
     async beforeMount () {
       this.bossStats = await this.$ethereumService.getCurrentBoss(this.networkId)
+      setInterval(async () => {
+        this.bossStats = await this.$ethereumService.getCurrentBoss(this.networkId)
+      }, 2000)
     }
   }
 </script>
