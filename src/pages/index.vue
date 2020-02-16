@@ -58,7 +58,6 @@
     }
 
     async beforeMount () {
-      await this.$ethereumService.getIsDaiApproved(this.networkId)
       await this.loadKitties()
       this.listenForEvents()
     }
