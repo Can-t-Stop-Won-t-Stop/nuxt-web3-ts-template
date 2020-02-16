@@ -11,7 +11,7 @@ export default class EthersService {
     this.store = store
     this.options = options
     this.web3 = {}
-    this.contract = new ethers.Contract('0xa4CEEB325423c662Cd41Ae653C00acD73E9b85Dc', DragonKittyABI, provider);
+    this.contract = new ethers.Contract('0x94a47955E7C69f390cc4Ca9ac9Aad93856b7ca1e', DragonKittyABI, provider);
     this.defaultAccount = ''
   }
 
@@ -40,4 +40,3 @@ export default class EthersService {
   }
 
 }
-
