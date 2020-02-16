@@ -10,7 +10,7 @@ const DRAGONKITTY_MAIN = '0x64b1Bcc75436BBcbBB5AF0A1fF8337Cc73c4e25d'
 const DRAGONKITTY_RINKEBY = '0x94a47955E7C69f390cc4Ca9ac9Aad93856b7ca1e'
 
 const DAI_MAINNET = '0x6b175474e89094c44da98b954eedeac495271d0f'
-const DAI_RINKEBY = '0x16f2cB582Cb380A5FB2172491c17D59af6C9b5F2'
+const DAI_RINKEBY = '0xC0431Df53547e72c37ce8116b8C31aB51b596024'
 
 const CK_ADDRESS = '0x06012c8cf97bead5deae237070f9587f8e7a266d'
 const CK_ADDRESS_RINKEBY = '0x16baf0de678e52367adc69fd067e5edd1d33e3bf'
@@ -227,6 +227,11 @@ export default class EthereumService {
     return contract.methods.currentBoss().call()
   }
 
+  async getCurrentDai (address, networkId) {
+    const contract = await this.getDaiContract(networkId)
+    return contract.methods.balanceOf(address).call()
+  }
+
   async getIsKittyApproved (kittyId, networkId) {
     const dragonContract = networkId === 1 ? DRAGONKITTY_MAIN : DRAGONKITTY_RINKEBY
     const contract = await this.getKittyCoreContract(networkId)
@@ -279,10 +284,10 @@ export default class EthereumService {
     })
 
     const contract = await this.getDaiContract(networkId)
-    console.log(contract.methods)
+    const dai = await this.getCurrentDai(fromAddress, networkId)
     const gasPriceInGwei = await this.getGasPriceInGwei()
     return contract.methods
-      .approve(dragonKittyContract, '100000000000000000000000')
+      .approve(dragonKittyContract, String(dai))
       .send({
         from: fromAddress,
         gasPrice: gasPriceInGwei,
