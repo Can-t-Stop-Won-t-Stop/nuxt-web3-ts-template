@@ -187,6 +187,11 @@ function setupKittyAPI() {
     return res.status(200).send(await getBossInfo2(id));
   });
 
+  app.all('/api/raidhistory', async (req, res) => {
+    const {id} = req.params;
+    return res.status(200).send(await getBossInfo2(id));
+  });
+
   async function getBossInfo2(id)
   {
     let provider = ethers.getDefaultProvider('rinkeby');
@@ -199,7 +204,11 @@ function setupKittyAPI() {
     var result;
 
     try {
-      var history = await contract.history(Number(id))
+      var tempBossId = (await contract.currentBoss()).bossId;
+      var currentBossId = parseInt(tempBossId);
+
+      var history = await contract.history(currentBossId);
+
       var bossId = parseInt(history.bossId);
       var startIndex = parseInt(history.startIndex);
       var recordLength = parseInt(history.recordLength);
