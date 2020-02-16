@@ -196,7 +196,7 @@
 
     get totalSpent () {
       const { chai, daiquiri, daisake } = this.bonus
-      return chai * 5 + daiquiri * 10 + daisake * 20
+      return chai * 1 + daiquiri * 5 + daisake * 10
     }
 
     async beforeMount () {
